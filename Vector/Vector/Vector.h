@@ -64,8 +64,8 @@ namespace Miit::Vector
 		Vector& operator=(const Vector& vector);
 
 		/*
-		@brief Перегрузка мув оператора
-		@param Vector Вектор для мува
+		@brief Перегрузка оператора перемещения
+		@param Vector Вектор для перемещения
 		@return Вектор
 		*/
 		Vector& operator=(Vector&& vector) noexcept;
