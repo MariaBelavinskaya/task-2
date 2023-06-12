@@ -139,6 +139,8 @@ int Miit::Vector::Vector::findI(int value) const
 	}
 }
 
+
+
 std::string Miit::Vector::Vector::toString() const noexcept
 {
 	std::stringstream sstring;

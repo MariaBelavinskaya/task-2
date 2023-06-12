@@ -7,6 +7,7 @@ int main()
 	try
 	{
 		Vector vector1{ 1, 2,3,4,5 };
+		Vector* a = &vector1;
 		Vector vector2{ 2, 3 ,4, 5 };
 		std::cout << vector1 << std::endl;
 		std::cout << vector2 << std::endl;
@@ -15,5 +16,6 @@ int main()
 	{
 		std::cout << error.what();
 	}
+
 	return 0;
 }
