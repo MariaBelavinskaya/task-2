@@ -18,7 +18,7 @@ namespace VectorTest
 				{auto x = Vector({ 1, 2,3,4,5,6,7 }); x[7]; });
 		}
 
-		TEST_METHOD(Pop_WrongIndex_ExeptionExpected)
+		TEST_METHOD(deleteI_WrongIndex_ExeptionExpected)
 		{
 
 			Assert::ExpectException<std::out_of_range>([]()
@@ -44,7 +44,7 @@ namespace VectorTest
 			Assert::IsTrue(vector1.toString() == "1 2 3 4 5 6 7 ");
 		}
 
-		TEST_METHOD(Append_ValidData_Success)
+		TEST_METHOD(addElement_ValidData_Success)
 		{
 			Vector vector1{ 1, 2,3,4,5,6,7 };
 			vector1.addElement(8);
@@ -52,7 +52,7 @@ namespace VectorTest
 			Assert::IsTrue(vector1 == expected);
 		}
 
-		TEST_METHOD(Pop_ValidData_Success)
+		TEST_METHOD(deleteI_ValidData_Success)
 		{
 			Vector vector1{ 1, 2,3,4,5,6,7 };
 			vector1.deleteI(1);
