@@ -3,39 +3,21 @@
 #include <sstream>
 
 Miit::Vector::Vector::Vector(const std::initializer_list<int> list)
-	:size(0)
+	:size(list.size())
 {
-	for (int value : list)
-	{
-		this->addElement(value);
-	}
+	this->array = new int[this->size];
+	std::copy(list.begin(), list.end(), this->array);
 }
 
 Miit::Vector::Vector::~Vector()
 {
 	delete[] this->array;
-	this->array = nullptr;
 }
 
 int Miit::Vector::Vector::getSize() const
 {
 	return this->size;
 }
-
-void Miit::Vector::Vector::addElement(int value)
-{
-	int* valuesNew = new int[this->size + 1];
-	for (size_t i = 0; i < this->size; i++)
-	{
-		valuesNew[i] = this->array[i];
-	}
-	valuesNew[this->size] = value;
-	delete[] this->array;
-	this->array = valuesNew;
-	this->size++;
-}
-
-
 
 bool Miit::Vector::Vector::isEmpty() const
 {
@@ -44,16 +26,18 @@ bool Miit::Vector::Vector::isEmpty() const
 
 Miit::Vector::Vector& Miit::Vector::Vector::operator=(const Vector& vector)
 {
+	if (vector == *this) 
+	{
+		return *this;
+	}
 	if (!this->isEmpty())
 	{
 		delete[] this->array;
 		this->array = nullptr;
 		this->size = 0;
 	}
-	for (int i = 0; i < vector.getSize(); i++)
-	{
-		this->addElement(vector.array[i]);
-	}
+	this->array = new int[this->size];
+	std::copy(vector.array, vector.array + vector.size, this->array);
 	return *this;
 }
 
@@ -65,19 +49,9 @@ Miit::Vector::Vector& Miit::Vector::Vector::operator=(Vector&& vector) noexcept
 }
 
 Miit::Vector::Vector::Vector(const Vector& vector)
-	:size(0), array(nullptr)
+	:size(vector.getSize()), array(nullptr)
 {
-	if (!this->isEmpty())
-	{
-		delete[] this->array;
-		this->array = nullptr;
-		this->size = 0;
-	}
-	for (int i = 0; i < vector.getSize(); i++)
-	{
-		this->addElement(vector.array[i]);
-	}
-
+	std::copy(vector.array, vector.array + vector.getSize(), this->array);
 }
 
 Miit::Vector::Vector::Vector(Vector&& vector) noexcept

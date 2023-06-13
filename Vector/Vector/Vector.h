@@ -25,12 +25,6 @@ namespace Miit::Vector
 		int getSize() const;
 
 		/*
-		@brief Добавление в вектор нового элемента
-		@param Элемент
-		*/
-		void addElement(int value);
-
-		/*
 		@brief Удаление элемента из вектора по индексу элемента
 		@param index Индекс элемента
 		*/
